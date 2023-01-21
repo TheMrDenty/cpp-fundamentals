@@ -31,7 +31,10 @@ int main()
 
     InitWindow(width, length, "Jamie's Window");
 
-    while (true)
+    while (!WindowShouldClose())
     {
-    }
+        BeginDrawing();
+        ClearBackground(RED);
+        EndDrawing();
+        }
 }
