@@ -24,13 +24,19 @@ int main()
     bool greaterEqual{4 >= 9}; */
 
     // window dimensions
-    int width{350};
-    int length{200};
+    int width{800};
+    int length{450};
     InitWindow(width, length, "Axe Game");
 
     // circle coordinates
     int circle_x{175};
     int circle_y{100};
+
+    // axe coordinates
+    int axe_x{400};
+    int axe_y{0};
+
+    int direction{10};
 
     SetTargetFPS(60);
 
@@ -43,14 +49,24 @@ int main()
 
         DrawCircle(circle_x, circle_y, 25, BLUE);
 
-        if (IsKeyDown(KEY_D))
+        DrawRectangle(axe_x, axe_y, 50, 50, RED);
+
+        // moves the axe
+        axe_y += direction;
+        if (axe_y > 450 || axe_y < 0)
         {
-            circle_x = circle_x + 10;
+            direction = -direction;
         }
 
-        if (IsKeyDown(KEY_A))
+        // moves the circle
+        if (IsKeyDown(KEY_D) && circle_x < 800)
         {
-            circle_x = circle_x - 10;
+            circle_x += 10;
+        }
+
+        if (IsKeyDown(KEY_A) && circle_x > 0)
+        {
+            circle_x -= 10;
         }
 
         // Game logic ends
